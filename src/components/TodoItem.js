@@ -7,7 +7,6 @@ const TodoItem = ({ index, todoItem, todos, setTodos }) => {
 	const [todo, setTodo] = useState(todoItem);
 
 	useEffect(() => {
-
 		setTodos(todos.map( item => {
 
 			if (item.id === todo.id) {
@@ -16,8 +15,7 @@ const TodoItem = ({ index, todoItem, todos, setTodos }) => {
 
 			return item;
 		}));
-
-	}, [todo])
+	}, [todo, todos, setTodos]);
 
 	function handleCheckbox() {
 		setTodo({...todo, isCompleted: !checked});

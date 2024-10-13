@@ -60,6 +60,7 @@ body {
 
 .todo-item {
     height: 30px;
+    min-height: fit-content;
     margin-bottom: 20px;
     padding-bottom: 5px;
     display: flex;
