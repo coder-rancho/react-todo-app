@@ -45,17 +45,18 @@ const TodoItem = ({ index, todoItem, todos, setTodos }) => {
 	}
 
 	return (
-		<div className="todoItem">
+		<div className="todo-item">
 			<input type="checkbox" onChange={handleCheckbox} checked={checked} />
 			<label htmlFor={`todo-${index}`} aria-label="Todo Item"></label>
-			<input
+			<textarea
 				id={`todo-${index}`}
-				className={`todoItem__task ${todo?.isCompleted && 'todoItem__task--completed'}`}
-				value={task}
+				className={`todo-item__task ${todo?.isCompleted && 'todo-item__task--completed'}`}
 				onChange={handleTask}
-				disabled={!isEditing}/>
-			<button onClick={handleEditing}>{isEditing ? 'Save' : 'Edit' }</button>
-			<button onClick={handleDelete}>Delete</button>
+				disabled={!isEditing}>
+					{task}
+				</textarea>
+			<button className="todo-item__edit-btn" onClick={handleEditing}>{isEditing ? 'Save' : 'Edit' }</button>
+			<button className="todo-item__delete-btn" onClick={handleDelete}>Delete</button>
 
 		</div>
 	);

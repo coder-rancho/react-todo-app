@@ -1,0 +1,106 @@
+:root {
+    --global-color-blue: #47b0e9;
+    --global-color-lightblue: #83b7d3;
+}
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    height: 100vh;
+    margin: 0;
+    background: linear-gradient(19deg, #FAACA8 0%, #DDD6F3 100%);
+    font-family: fantasy;
+}
+
+.todos {
+    max-width: 500px;
+    min-height: 50px;
+    margin: 50px auto;
+    padding: 0 25px 10px;
+    background: rgba(255,255,255, .4);
+    border-radius: 5px;
+    box-shadow: 0 0 4px #666666;
+}
+
+.todos__heading {
+    padding: 20px;
+    text-align: center;
+    color: var(--global-color-lightblue);
+}
+
+.todos__add-item-form {
+    height: 40px;
+    margin: 0 auto 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.todos__add-item-form input {
+    width: 100%;
+    height: 100%;
+    padding: 0 10px;
+    border: 1px solid transparent;
+}
+.todos__add-item-form button {
+    color: white;
+    width: 20%;
+    height: 100%;
+    text-transform: uppercase;
+    background: var(--global-color-lightblue);
+    border: 1px solid transparent;
+    cursor: pointer;
+}
+
+.todos__add-item-form button:hover {
+    background-color: var(--global-color-blue);
+}
+
+.todo-item {
+    height: 30px;
+    margin-bottom: 20px;
+    padding-bottom: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 5px;
+}
+
+.todo-item * {
+    min-height: 100%;
+}
+
+.todo-item__task {
+    flex-grow: 1;
+    background-color: transparent;
+    border: 1px dashed #999999;
+    padding-left: 5px;
+
+}
+
+.todo-item__task:disabled {
+    border-width: 0 0 1px 0;
+    text-wrap: wrap;
+}
+
+.todo-item__task--completed {
+    text-decoration: line-through;
+}
+
+.todo-item button {
+    padding: 0 10px;
+    cursor: pointer;
+    border: none;
+    background-color: white;
+}
+
+.todo-item__edit-btn:hover {
+    background-color: yellow;
+}
+
+.todo-item__delete-btn:hover {
+    color: white;
+    background-color: red;
+}

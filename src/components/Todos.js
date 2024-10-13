@@ -22,7 +22,6 @@ const Todos = () => {
 	const [newTask, setNewTask] = useState('');
 
 	useEffect(() => {
-		console.log(todos)
 		localStorage.setItem(todosKey, JSON.stringify(todos));
 	}, [todos]);
 
@@ -51,15 +50,15 @@ const Todos = () => {
 
 	return (
 		<div className="todos">
-			<h1>Add your Todos.</h1>
-			<form className="todos__add-todo" onSubmit={addItem}>
+			<h1 className="todos__heading">Todo App</h1>
+			<form className="todos__add-item-form" onSubmit={addItem}>
 				<label htmlFor="todos__add-item" aria-label="Add todo item"></label>
 				<input
 					id="todos__add-item"
 					placeholder="New task"
 					value={newTask}
 					onChange={handleNewTaskChange} />
-				<button type="submit">Add</button>
+				<button  type="submit">Add</button>
 			</form>
 			{
 				todos.map( (todo, index) => (
