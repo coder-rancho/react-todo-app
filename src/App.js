@@ -1,11 +1,13 @@
+import Todos from './components/Todos';
 import './App.css';
 
-function App() {
+const App = () => {
+
   return (
-    <div>
-      <h1>Todo App</h1>
-    </div>
+      <div className='todo-app'>
+        <Todos />
+      </div>
   );
-}
+};
 
 export default App;
