@@ -14,6 +14,10 @@ body {
     font-family: fantasy;
 }
 
+.invalid-input:focus {
+    outline-color: red;
+}
+
 .todos {
     max-width: 500px;
     min-height: 50px;
@@ -44,6 +48,7 @@ body {
     padding: 0 10px;
     border: 1px solid transparent;
 }
+
 .todos__add-item-form button {
     color: white;
     width: 20%;

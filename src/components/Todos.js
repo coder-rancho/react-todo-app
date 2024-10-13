@@ -20,6 +20,7 @@ function getStoredTodos() {
 const Todos = () => {
 	const [todos, setTodos] = useState(getStoredTodos());
 	const [newTask, setNewTask] = useState('');
+	const [isInvalidInput, setIsInvalidInput] = useState(false);
 
 	useEffect(() => {
 		localStorage.setItem(todosKey, JSON.stringify(todos));
@@ -29,7 +30,6 @@ const Todos = () => {
 		e.preventDefault();
 
 		if (!newTask) {
-			alert('Please enter the task.');
 			return;
 		}
 
@@ -44,6 +44,13 @@ const Todos = () => {
 	}
 
 	function handleNewTaskChange(e) {
+
+		if (!e.target.value) {
+			setIsInvalidInput(true);
+		} else {
+			setIsInvalidInput(false);
+		}
+
 		setNewTask(e.target.value);
 	}
 
@@ -54,6 +61,7 @@ const Todos = () => {
 			<form className="todos__add-item-form" onSubmit={addItem}>
 				<label htmlFor="todos__add-item" aria-label="Add todo item"></label>
 				<input
+					className={ isInvalidInput ? 'invalid-input' : ''}
 					id="todos__add-item"
 					placeholder="New task"
 					value={newTask}
