@@ -28,8 +28,10 @@ const Todos = () => {
 
 	function addItem(e) {
 		e.preventDefault();
+		document.getElementById('todos__add-item')?.focus();
 
 		if (!newTask) {
+			alert('Please enter the task first.');
 			return;
 		}
 
@@ -41,19 +43,20 @@ const Todos = () => {
 
 		setTodos([...todos, newTodo]);
 		setNewTask('');
+
 	}
 
 	function handleNewTaskChange(e) {
+		const task = e.target.value?.trim(); 
 
-		if (!e.target.value) {
+		if (!task) {
 			setIsInvalidInput(true);
 		} else {
 			setIsInvalidInput(false);
 		}
 
-		setNewTask(e.target.value);
+		setNewTask(task);
 	}
-
 
 	return (
 		<div className="todos">
@@ -61,6 +64,7 @@ const Todos = () => {
 			<form className="todos__add-item-form" onSubmit={addItem}>
 				<label htmlFor="todos__add-item" aria-label="Add todo item"></label>
 				<input
+					autoFocus
 					className={ isInvalidInput ? 'invalid-input' : ''}
 					id="todos__add-item"
 					placeholder="New task"

@@ -1,11 +1,18 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 
 const TodoItem = ({ index, todoItem, todos, setTodos }) => {
+	const textareaElem = useRef();
 	const [checked, setChecked] = useState(todoItem?.isCompleted ?? false);
 	const [isEditing, setIsEditing] = useState(false);
 	const [task, setTask] = useState(todoItem?.task ?? '');
 	const [todo, setTodo] = useState(todoItem);
 	const [isInvalidInput, setIsInvalidInput] = useState(false);
+
+    useEffect(() => {
+        if (isEditing) {
+            textareaElem.current.focus();
+        }
+    }, [isEditing]);
 
 	useEffect(() => {
 		setTodos(todos.map( item => {
@@ -24,7 +31,7 @@ const TodoItem = ({ index, todoItem, todos, setTodos }) => {
 	}
 
 	function handleTask(e) {
-		const updatedTask = e.target.value;
+		const updatedTask = e.target.value?.trim();
 
 		if ( !updatedTask ) {
 			setIsInvalidInput(true);
@@ -38,14 +45,24 @@ const TodoItem = ({ index, todoItem, todos, setTodos }) => {
 
 	function handleEditing(e) {
 
+		if (!isEditing) {
+			textareaElem.current.focus();
+			console.log(textareaElem.current)
+		}
+
 		if ( isEditing && !task ) {
-			alert('Please enter the task.');
+			alert('Please enter the task first.');
 			return;
 		}
 		setIsEditing(!isEditing);
 	}
 
 	function handleDelete(e) {
+
+		const proceed = window.confirm('Are you sure you want to delete this todo.');
+		if ( !proceed ) {
+			return;
+		}
 		setTodos( todos.filter( item => item.id !== todo.id) );
 	}
 
@@ -58,7 +75,8 @@ const TodoItem = ({ index, todoItem, todos, setTodos }) => {
 				className={`todo-item__task ${todo?.isCompleted && 'todo-item__task--completed'} ${isInvalidInput ? 'invalid-input' : ''}`}
 				onChange={handleTask}
 				disabled={!isEditing}
-				value={task} />
+				value={task} 
+				ref={textareaElem} />
 			<button className="todo-item__edit-btn" onClick={handleEditing}>{isEditing ? 'Save' : 'Edit' }</button>
 			<button className="todo-item__delete-btn" onClick={handleDelete}>Delete</button>
 
