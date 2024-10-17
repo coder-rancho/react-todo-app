@@ -33,6 +33,11 @@ const TodoItem = ({ index, todoItem, todos, setTodos }) => {
 	 * Update the todos state whenever the todo object changes.
 	 */
 	useEffect(() => {
+
+		if (isInvalidInput) {
+			return;
+		}
+
 		setTodos(todos.map(item => {
 			if (item.id === todo.id) {
 				return todo;
@@ -54,9 +59,9 @@ const TodoItem = ({ index, todoItem, todos, setTodos }) => {
 	 * @param {Event} e - The change event from the textarea
 	 */
 	function handleTask(e) {
-		const updatedTask = e.target.value?.trim();
+		const updatedTask = e.target.value;
 
-		if (!updatedTask) {
+		if (!updatedTask.trim()) {
 			setIsInvalidInput(true);
 		} else {
 			setIsInvalidInput(false);
@@ -75,7 +80,7 @@ const TodoItem = ({ index, todoItem, todos, setTodos }) => {
 			textareaElem.current.focus();
 		}
 
-		if (isEditing && !task) {
+		if (isEditing && !task.trim()) {
 			alert('Please enter the task first.');
 			return;
 		}

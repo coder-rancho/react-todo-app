@@ -7,6 +7,7 @@
     --global-color-light-gray: #999999;
     --global-color-gray-opacity-40: rgba(255,255,255, .4);
 }
+
 * {
     margin: 0;
     padding: 0;

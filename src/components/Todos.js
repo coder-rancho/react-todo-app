@@ -44,7 +44,7 @@ const Todos = () => {
 		e.preventDefault();
 		document.getElementById('todos__add-item')?.focus();
 
-		if (!newTask) {
+		if (!newTask.trim()) {
 			alert('Please enter the task first.');
 			return;
 		}
@@ -64,9 +64,9 @@ const Todos = () => {
 	 * @param {Event} e - The change event from the input
 	 */
 	function handleNewTaskChange(e) {
-		const task = e.target.value?.trim();
+		const task = e.target.value;
 
-		if (!task) {
+		if (!task.trim()) {
 			setIsInvalidInput(true);
 		} else {
 			setIsInvalidInput(false);
