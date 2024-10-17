@@ -1,6 +1,11 @@
 :root {
     --global-color-blue: #47b0e9;
     --global-color-lightblue: #83b7d3;
+    --global-color-peach: #FAACA8;
+    --global-color-light-purple: #DDD6F3;
+    --global-color-gray: #666666;
+    --global-color-light-gray: #999999;
+    --global-color-gray-opacity-40: rgba(255,255,255, .4);
 }
 * {
     margin: 0;
@@ -10,7 +15,7 @@
 body {
     height: 100vh;
     margin: 0;
-    background: linear-gradient(19deg, #FAACA8 0%, #DDD6F3 100%);
+    background: linear-gradient(19deg, var(--global-color-peach) 0%, var(--global-color-light-purple) 100%);
     font-family: fantasy;
 }
 
@@ -27,9 +32,9 @@ input[type="checkbox"] {
     min-height: 50px;
     margin: 50px auto;
     padding: 0 25px 10px;
-    background: rgba(255,255,255, .4);
+    background: var(--global-color-gray-opacity-40);
     border-radius: 5px;
-    box-shadow: 0 0 4px #666666;
+    box-shadow: 0 0 4px var(--global-color-gray);
 }
 
 .todos__heading {
@@ -85,7 +90,7 @@ input[type="checkbox"] {
 .todo-item__task {
     flex-grow: 1;
     background-color: transparent;
-    border: 1px dashed #999999;
+    border: 1px dashed var(--global-color-light-gray);
     padding-left: 5px;
     padding-top: 15px;
     max-height: 50px;
