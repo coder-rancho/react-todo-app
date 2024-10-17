@@ -81,7 +81,8 @@ const TodoItem = ({ index, todoItem, todos, setTodos }) => {
 		}
 
 		if (isEditing && !task.trim()) {
-			alert('Please enter the task first.');
+			alert('Task is empty, Please enter the task first.');
+			textareaElem.current.focus()
 			return;
 		}
 		setIsEditing(!isEditing);

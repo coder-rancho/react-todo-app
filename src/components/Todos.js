@@ -45,7 +45,7 @@ const Todos = () => {
 		document.getElementById('todos__add-item')?.focus();
 
 		if (!newTask.trim()) {
-			alert('Please enter the task first.');
+			alert('Task is empty, Please enter the task first.');
 			return;
 		}
 
