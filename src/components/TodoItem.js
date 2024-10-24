@@ -68,7 +68,6 @@ const TodoItem = ({ index, todoItem, todos, setTodos }) => {
 		}
 
 		setTask(updatedTask);
-		setTodo({ ...todo, task: updatedTask });
 	}
 
 	/**
@@ -80,11 +79,17 @@ const TodoItem = ({ index, todoItem, todos, setTodos }) => {
 			textareaElem.current.focus();
 		}
 
-		if (isEditing && !task.trim()) {
+		const trimmedTask = task.trim();
+
+		if (isEditing && !trimmedTask) {
 			alert('Task is empty, Please enter the task first.');
 			textareaElem.current.focus()
 			return;
+		} else if ( isEditing ) {
+			setTask(trimmedTask);
+			setTodo({ ...todo, task: trimmedTask });
 		}
+
 		setIsEditing(!isEditing);
 	}
 

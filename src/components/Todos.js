@@ -51,7 +51,7 @@ const Todos = () => {
 
 		const newTodo = {
 			id: Date.now(),
-			task: newTask,
+			task: newTask.trim(),
 			isCompleted: false,
 		}
 
